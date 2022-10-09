@@ -1,5 +1,6 @@
 from GUI.EditorGUI import Editor
 
+# Entry point
 def main():
     editor = Editor()
     editor.mainloop()
