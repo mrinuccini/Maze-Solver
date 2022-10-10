@@ -1,6 +1,7 @@
 from tkinter import *
 from GUI.Cell import Cell
 from GUI.Simulation_Data import Simulation_Data
+from Algorithm.Solving.Dimensions_Code_Algorithm import Solve as Dimension_Code_Solve
 import numpy as np
 import random
 
@@ -66,6 +67,9 @@ class Editor(Tk):
         exit_cell.attribute = 1
         entrance_cell.attribute = 2
 
+        self.sim_data.entrance_cell = entrance_cell
+        self.sim_data.exit_cell = exit_cell
+
         self.main_canvas.itemconfig(exit_cell.canvas_object_id, fill='red', outline='red')
         self.main_canvas.itemconfig(entrance_cell.canvas_object_id, fill='blue', outline='blue')
 
@@ -75,11 +79,8 @@ class Editor(Tk):
 
         self.main_canvas.pack(side=RIGHT)
 
-        cell_list = self.sim_data.Export_Cell_List()
-        print(cell_list.shape)
-
     def Draw_Left_Pannel(self) -> None:
-        self.solve_button = Button(self, text="Solve", font=("Arial", 20))
+        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self.main_canvas, self.sim_data.Export_Cell_List()))
         self.solve_button.pack(side=LEFT)
 
         self.clear_button = Button(self, text="Clear", font=("Arial", 20), command=lambda: self.Clear_Canvas())
