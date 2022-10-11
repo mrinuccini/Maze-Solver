@@ -70,7 +70,7 @@ class Editor(Tk):
         self.sim_data.entrance_cell = entrance_cell
         self.sim_data.exit_cell = exit_cell
 
-        self.main_canvas.itemconfig(exit_cell.canvas_object_id, fill='red', outline='red')
+        self.main_canvas.itemconfig(exit_cell.canvas_object_id, fill='green', outline='green')
         self.main_canvas.itemconfig(entrance_cell.canvas_object_id, fill='blue', outline='blue')
 
         # Bind the paint event
