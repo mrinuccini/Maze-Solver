@@ -80,7 +80,7 @@ class Editor(Tk):
         self.main_canvas.pack(side=RIGHT)
 
     def Draw_Left_Pannel(self) -> None:
-        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self.main_canvas, self.sim_data.Export_Cell_List()))
+        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
         self.solve_button.pack(side=LEFT)
 
         self.clear_button = Button(self, text="Clear", font=("Arial", 20), command=lambda: self.Clear_Canvas())

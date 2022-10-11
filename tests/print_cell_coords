@@ -20,7 +20,7 @@ def Print_Cell_Coords(event):
 
     cell_y_ratio = cell_id / 51
     cell_coords = (math.floor(cell_y_ratio),
-                   math.ceil((cell_y_ratio - math.floor(cell_y_ratio)) * 51)
+                   round((cell_y_ratio - math.floor(cell_y_ratio)) * 51)
                   )
     print(cell_coords)
 
