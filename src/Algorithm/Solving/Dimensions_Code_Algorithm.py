@@ -62,6 +62,7 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
 
                 # Mark the distance from the arrived
                 dict_output[current_tile][4] = dict_output[coord][4] + 1
+                dict_output[current_tile][5] = True
                 next_process.append(current_tile)
 
                 # Update the canvas 
@@ -80,31 +81,41 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
         next_process.clear()
 
     current_tile = entrance_cell_coords
+    is_solving = True
 
-    while True:
+    while is_solving:
         dict_output[current_tile][4] = 0
         current_process = {}
 
         for direction in direction_to_process:
             next_tile = (current_tile[0] + direction[0], current_tile[1] + direction[1])
-            print(next_tile)
-
-            # Check if the tile is out of bound
-            if (next_tile[0] < 0 or next_tile[0] > 37) or (next_tile[1] < 0 or next_tile[1] > 50): continue
-
-            # Checks if the tile is a wall
-            if dict_output[next_tile][1] == 1: continue
-
-            # If the tile has not been processed by the searcher
-            if dict_output[next_tile][4] == 0: continue
-
-            current_process[next_tile] = dict_output[next_tile][4]
+            
+            # If the tile is out of bound skip it
+            if next_tile[0] < 0 or next_tile[0] > 37 or next_tile[1] < 0 or next_tile[0] > 50: continue
+            
+            # If the tile is the exit, stop the solving
+            if dict_output[next_tile][3] == 1:
+                is_solving = False
+                break
+            
+            # If the tile hasn't been processed skip it
+            if dict_output[next_tile][5] == False: continue
+            
+            current_process[next_tile] = (dict_output[next_tile][4], dict_output[next_tile][2])
         
-        current_process_sorted = {k: v for k, v in sorted(current_process.items(), key=lambda item: item[1])}
-        current_tile = list(current_process_sorted.keys())[0]
-        editor.main_canvas.itemconfigure(dict_output[current_tile], fill='pink', outline='pink')
+        if not is_solving:
+            break
+        
+        sorted_current_process = {k: v for k, v in sorted(current_process.items(), key=lambda item: item[1])}
+        dict_output[current_tile][5] = False
+        current_tile = list(sorted_current_process.items())[0][0]
+        
+        editor.main_canvas.itemconfig(dict_output[current_tile][2], fill='pink', outline='pink')
         editor.main_canvas.update()
         editor.update()
+        
+        
+            
     print("Solved !")
     
     

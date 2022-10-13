@@ -16,7 +16,7 @@ class Editor(Tk):
         self.sim_data = Simulation_Data(20)
 
         self.title("SquidyDev Maze Solver")
-        self.geometry("1320x760")
+        self.geometry("1320x780")
 
         self.DrawCanvas()
         self.Draw_Left_Pannel()
@@ -49,20 +49,20 @@ class Editor(Tk):
 
     # Use to draw the canvas where the maze will be generated and solved
     def DrawCanvas(self) -> None:
-        self.main_canvas = Canvas(self, width=1020, height=760, bg='black')
+        self.main_canvas = Canvas(self, width=1020, height=780, bg='black')
 
         # Generate the grid of cells
         current_cell_id = 0
 
-        for y in range(0, 750, self.sim_data.cell_dim):
+        for y in range(0, 780, self.sim_data.cell_dim):
             for x in range(0, 1020, self.sim_data.cell_dim):
                 cell = Cell(current_cell_id, self.main_canvas, x_pos=x, y_pos=y, dimensions=self.sim_data.cell_dim)
                 self.sim_data.cell_list.append(cell)
 
                 current_cell_id += 1
 
-        entrance_cell = self.sim_data.cell_list[random.randint(0, len(self.sim_data.cell_list))]
-        exit_cell = self.sim_data.cell_list[random.randint(0, len(self.sim_data.cell_list))]
+        entrance_cell = self.sim_data.cell_list[100]
+        exit_cell = self.sim_data.cell_list[40]
 
         exit_cell.attribute = 1
         entrance_cell.attribute = 2

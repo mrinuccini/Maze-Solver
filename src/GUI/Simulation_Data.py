@@ -12,7 +12,7 @@ class Simulation_Data:
         self.cell_dim = cell_dim
 
     def Export_Cell_List(self) -> list:
-        binary_list = [(cell.cell_id, 1 if cell.is_wall else 0, cell.canvas_object_id, cell.attribute, -1 if cell.is_wall else 0) for cell in self.cell_list]
-        binary_array = np.array(binary_list).reshape((51, 38, 5))
+        binary_list = [(cell.cell_id, 1 if cell.is_wall else 0, cell.canvas_object_id, cell.attribute, -1 if cell.is_wall else 0, False) for cell in self.cell_list]
+        binary_array = np.array(binary_list).reshape((51, 39, 6))
 
         return binary_array
