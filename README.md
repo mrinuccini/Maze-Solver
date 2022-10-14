@@ -12,3 +12,16 @@ This repository contains the source code of a python application that allow you 
 <p align="center">
     <img src="https://i.imgur.com/cozklUP.png">
 </p>
+
+# Features
+
+* You can choose different pathfinding algorithms (there is only one implemented yet but more will come later): Breadth-First
+<br/>
+* You can choose different maze generation algorithms (there is only one implemented yet but more will come later): Krukal's 
+Algorithm
+<br/>
+* You can draw your own walls
+
+<p align="center">
+<img src="https://i.imgur.com/LPFG4KE.png">
+</p>
