@@ -7,6 +7,9 @@ class Simulation_Data:
     cell_list = []
     entrance_cell: Cell = None
     exit_cell: Cell = None
+    
+    can_solve = True
+    can_generate = True
 
     def __init__(self, cell_dim: int):
         self.cell_dim = cell_dim

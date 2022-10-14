@@ -1,6 +1,7 @@
 from concurrent.futures.process import _chain_from_iterable_of_lists
 import tkinter
 from GUI.Simulation_Data import Simulation_Data
+from tkinter.messagebox import showinfo
 from colour import Color
 import math
 import numpy as np
@@ -16,7 +17,27 @@ def Get_Cell_Coord(cell_id, shape):
                   )
     return cell_coords
 
+# Fait en sorte que tout les murs soit noir et toutes les cellules blanches
+def Clear_Maze(maze: np.array, canvas: tkinter.Canvas):
+    print(maze.shape)
+    for x in range(0, maze.shape[0] - 1):
+        for y in range(0, maze.shape[1] - 1):
+            if not maze[x][y][3] == 0: continue
+            
+            color = 'black' if maze[x][y][1] == 1 and maze[x][y][3] == 0 else 'white'
+            canvas.itemconfig(maze[x][y][2], fill=color, outline=color)
+
 def Solve(sim_data: Simulation_Data, editor, maze: np.array):
+    # Checks if a solving or a generation is not in progress
+    if not editor.sim_data.can_solve: 
+        showinfo("Warning", "Cannot solve the maze while a generation or a solving is in progress")
+        return
+    
+    editor.sim_data.can_generate = False
+    editor.sim_data.can_solve = False
+    
+    Clear_Maze(maze, editor.main_canvas)
+    
     print("Solving Maze...")
     dict_output = {}
     count = 0
@@ -115,7 +136,8 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
         editor.update()
         
         
-            
+    editor.sim_data.can_generate = True
+    editor.sim_data.can_solve = True
     print("Solved !")
     
     

@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.messagebox import showinfo
 from GUI.Cell import Cell
 from GUI.Simulation_Data import Simulation_Data
 from Algorithm.Solving.Dimensions_Code_Algorithm import Solve as Dimension_Code_Solve
@@ -41,6 +42,11 @@ class Editor(Tk):
 
     # Use to clear the canvas
     def Clear_Canvas(self) -> None:
+        # Checks if a generation or a solving is not in progress
+        if not self.sim_data.can_generate:
+            showinfo("Warning", "Cannot clear the canvas while a generation or a solving is in progress.")
+            return
+        
         for cell in self.sim_data.cell_list:
             if not cell.attribute == 0: continue
             
@@ -62,6 +68,7 @@ class Editor(Tk):
 
                 current_cell_id += 1
 
+        # Pick the entrance and exit cell
         entrance_cell = self.sim_data.cell_list[52]
         exit_cell = self.sim_data.cell_list[1936]
 
@@ -71,8 +78,16 @@ class Editor(Tk):
         self.sim_data.entrance_cell = entrance_cell
         self.sim_data.exit_cell = exit_cell
 
+        # Give them color
         self.main_canvas.itemconfig(exit_cell.canvas_object_id, fill='green', outline='green')
         self.main_canvas.itemconfig(entrance_cell.canvas_object_id, fill='blue', outline='blue')
+        
+        # Add icon to the entrance and exit cell
+        entrance_icon = PhotoImage(file="src/GUI/assets/start.png")
+        self.main_canvas.create_image(20, 20, image=entrance_icon, anchor=NW)
+        
+        exit_icon = PhotoImage(file="src/GUI/assets/exit.png")
+        self.main_canvas.create_image(980, 740, image=exit_icon, anchor=NW)
 
         # Bind the paint event
         self.main_canvas.bind('<B1-Motion>', lambda event: self.On_Canvas_Click(event, True))
@@ -81,11 +96,40 @@ class Editor(Tk):
         self.main_canvas.pack(side=RIGHT)
 
     def Draw_Left_Pannel(self) -> None:
-        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
-        self.solve_button.pack(side=LEFT)
-
-        self.clear_button = Button(self, text="Clear", font=("Arial", 20), command=lambda: self.Clear_Canvas())
-        self.clear_button.pack(side=LEFT)
+        # A title for the algorithm (generation) dropdown
+        self.generation_algorithm_title = Label(self, text="Generation Algorithm", font=("Arial", 20))
+        self.generation_algorithm_title.place(x=20, y=0)
         
+        # The dropbox to choose the maze generation algorithm
+        generation_options = ["Kruskal's algorithm"]
+        
+        choice_generation = StringVar(self)
+        choice_generation.set(generation_options[0])
+        
+        self.generation_algorithm_choice = OptionMenu(self, choice_generation, *generation_options)
+        self.generation_algorithm_choice.place(x=20, y=40)
+        
+        # A title for the algorithm (solving) dropdown
+        self.generation_algorithm_title = Label(self, text="Solving Algorithm", font=("Arial", 20))
+        self.generation_algorithm_title.place(x=20, y=70)
+        
+        # The dropbox to choose the maze generation algorithm
+        options_solving = ["Breadth-First"]
+        
+        choice_solving = StringVar(self)
+        choice_solving.set(options_solving[0])
+        
+        self.generation_algorithm_choice = OptionMenu(self, choice_solving, *options_solving)
+        self.generation_algorithm_choice.place(x=20, y=110)
+        
+        # The button to solve the maze
+        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
+        self.solve_button.place(x=20, y=140)
+
+        # The button to clear the maze
+        self.clear_button = Button(self, text="Clear", font=("Arial", 20), command=lambda: self.Clear_Canvas())
+        self.clear_button.place(x=20, y=180)
+        
+        # The button to generate a maze
         self.generate_button = Button(self, text="Generate", font=("Arial", 20), command=lambda: Krustal_Generate((51, 39), self))
-        self.generate_button.pack(side=LEFT)
+        self.generate_button.place(x=20, y=220)
