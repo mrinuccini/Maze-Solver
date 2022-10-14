@@ -2,6 +2,7 @@ from tkinter import *
 from GUI.Cell import Cell
 from GUI.Simulation_Data import Simulation_Data
 from Algorithm.Solving.Dimensions_Code_Algorithm import Solve as Dimension_Code_Solve
+from Algorithm.Generation.Kruskal_Algorithm import Generate_Maze as Krustal_Generate
 import numpy as np
 import random
 
@@ -61,8 +62,8 @@ class Editor(Tk):
 
                 current_cell_id += 1
 
-        entrance_cell = self.sim_data.cell_list[100]
-        exit_cell = self.sim_data.cell_list[40]
+        entrance_cell = self.sim_data.cell_list[52]
+        exit_cell = self.sim_data.cell_list[1936]
 
         exit_cell.attribute = 1
         entrance_cell.attribute = 2
@@ -85,3 +86,6 @@ class Editor(Tk):
 
         self.clear_button = Button(self, text="Clear", font=("Arial", 20), command=lambda: self.Clear_Canvas())
         self.clear_button.pack(side=LEFT)
+        
+        self.generate_button = Button(self, text="Generate", font=("Arial", 20), command=lambda: Krustal_Generate((51, 39), self))
+        self.generate_button.pack(side=LEFT)

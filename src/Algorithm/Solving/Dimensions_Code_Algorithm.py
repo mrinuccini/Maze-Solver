@@ -6,7 +6,7 @@ import math
 import numpy as np
 
 red = Color("red")
-colors = list(red.range_to(Color("violet"),70))
+colors = list(red.range_to(Color("blue"),200))
 
 # Returns a table containing the coords of the cell based on the shape of the table
 def Get_Cell_Coord(cell_id, shape):
@@ -110,7 +110,7 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
         dict_output[current_tile][5] = False
         current_tile = list(sorted_current_process.items())[0][0]
         
-        editor.main_canvas.itemconfig(dict_output[current_tile][2], fill='pink', outline='pink')
+        editor.main_canvas.itemconfig(dict_output[current_tile][2], fill='violet', outline='violet')
         editor.main_canvas.update()
         editor.update()
         
