@@ -24,8 +24,28 @@ Algorithm
 
 <br/>
 
-* You can draw your own walls
+* You can draw your own walls :
 
 <p align="center">
     <img src="https://i.imgur.com/LPFG4KE.png" width=500>
 </p>
+
+<br/>
+
+* The `Clear` button allow you to clear the canvas and the `Solve` button launch the pathfinding algorithm
+
+# Solving & Generation Algorithms
+### Generation Algorithms
+
+* ** Kruskal's Algorithm :**
+
+<p align="center">
+    <img src="https://i.imgur.com/ILhObAL.png", width="45%">
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <img src="https://i.imgur.com/H8Oz26f.png", width="45%">
+</p>
+
+<br/>
+
+### Solving Algorithms
+* ** Breadth-First :**
