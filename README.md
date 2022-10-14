@@ -10,5 +10,5 @@ This repository contains the source code of a python application that allow you 
 <br/>
 
 <p align="center">
-    <img src="https://imgur.com/a/U5oDJsB">
+    <img src="https://i.imgur.com/cozklUP.png">
 </p>
