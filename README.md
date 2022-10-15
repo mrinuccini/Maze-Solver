@@ -1,5 +1,8 @@
 # Maze Solver
 ![Language](http://ForTheBadge.com/images/badges/made-with-python.svg)
+
+<br/>
+
 ![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 # About the project
