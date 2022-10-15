@@ -19,11 +19,11 @@ This repository contains the source code of a python application that allow you 
 
 # Features
 
-* You can choose different pathfinding algorithms (there is only one implemented yet but more will come later): Breadth-First
+* You can choose different pathfinding algorithms : Breadth-First algorithm, A* algorithm
 
 <br/>
 
-* You can choose different maze generation algorithms : Kruskal's Algorithm, Depth Search First Algorithm
+* You can choose different maze generation algorithms : Kruskal's Algorithm, Depth Search First algorithm
 
 <br/>
 
@@ -61,12 +61,20 @@ This repository contains the source code of a python application that allow you 
 <br/>
 
 ### Solving Algorithms
-* **Breadth-First :**
+* **Breadth-First (slow but gives the shortest path) :**
 
 <p align="center">
     <img src="https://i.imgur.com/BhqKbdV.png", width="45%">
     <span>&nbsp;&nbsp;&nbsp;</span>
     <img src="https://i.imgur.com/A5fmtZs.png", width="45%">
+</p>
+
+* **A* Algorithm (fast and gives the shortest path) :**
+
+<p align="center">
+    <img src="https://i.imgur.com/jkZc1fI.png", width="45%">
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <img src="https://i.imgur.com/Ij5OKdO.png", width="45%">
 </p>
 
 # Roadmap
@@ -80,7 +88,7 @@ This repository contains the source code of a python application that allow you 
 
 ### Solving algorithms
 - [x] Add support for Breadth-First algorithm
-- [ ] Add support for A* pathfinding algorithm
+- [x] Add support for A* pathfinding algorithm
 
 # Getting started
 ### Prerequisites

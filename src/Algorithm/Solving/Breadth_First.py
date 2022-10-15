@@ -1,30 +1,7 @@
-import tkinter
 from GUI.Simulation_Data import Simulation_Data
+from Algorithm.Solving.Solving_Util import *
 from tkinter.messagebox import showinfo
-from colour import Color
-import math
 import numpy as np
-
-red = Color("red")
-colors = list(red.range_to(Color("purple"),400))
-
-# Returns a table containing the coords of the cell based on the shape of the table
-def Get_Cell_Coord(cell_id, shape):
-    cell_ratio = cell_id / shape[0]
-    cell_coords = ( math.floor(cell_ratio),
-                    round((cell_ratio - math.floor(cell_ratio)) * shape[0])
-                  )
-    return cell_coords
-
-# Fait en sorte que tout les murs soit noir et toutes les cellules blanches
-def Clear_Maze(maze: np.array, canvas: tkinter.Canvas):
-    print(maze.shape)
-    for x in range(0, maze.shape[0] - 1):
-        for y in range(0, maze.shape[1] - 1):
-            if not maze[x][y][3] == 0: continue
-            
-            color = 'black' if maze[x][y][1] == 1 and maze[x][y][3] == 0 else 'gray' if (50 * x + 38 * y) % 2 == 1 else 'white'
-            canvas.itemconfig(maze[x][y][2], fill=color, outline=color)
 
 def Solve(sim_data: Simulation_Data, editor, maze: np.array):
     # Checks if a solving or a generation is not in progress
@@ -38,17 +15,7 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
     Clear_Maze(maze, editor.main_canvas)
     
     print("Solving Maze...")
-    dict_output = {}
-    count = 0
-
-
-    """ Generate a dictionnary with key being coordinates and values being cell data """
-    for x in range(0, maze.shape[0]):
-        for y in range(0, maze.shape[1]):
-            dict_output[Get_Cell_Coord(maze[x][y][0], maze.shape)] = maze[x][y]
-            count += 1
-
-    print(f"Length of dict : {len(dict_output)} ; expected length : {count}")
+    dict_output = Maze_To_Dict(maze)
 
     entrance_cell_coords = Get_Cell_Coord(sim_data.entrance_cell.cell_id, maze.shape)
     exit_cell_coords = Get_Cell_Coord(sim_data.exit_cell.cell_id, maze.shape)
