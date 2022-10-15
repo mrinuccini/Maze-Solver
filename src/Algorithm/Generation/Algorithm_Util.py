@@ -1,4 +1,4 @@
-from Algorithm.Solving.Dimensions_Code_Algorithm import Get_Cell_Coord
+from Algorithm.Solving.Breadth_First import Get_Cell_Coord
 from colour import Color
 
 red = Color("red")
