@@ -5,6 +5,7 @@ from GUI.Simulation_Data import Simulation_Data
 from Algorithm.Solving.Breadth_First import Solve as Breadth_First_Solve
 from Algorithm.Generation.Kruskal_Algorithm import Generate_Maze as Krustal_Generate
 from Algorithm.Generation.Depth_Search_First import Generate_Maze as DSF_Generate
+from Algorithm.Solving.A_Star import Solve as A_Star_Solve
 import numpy as np
 import random
 
@@ -103,6 +104,14 @@ class Editor(Tk):
             Krustal_Generate((51, 39), self)
         elif choice == "Depth search first":
             DSF_Generate((51, 39), self)
+            
+    def Solve(self) -> None:
+        choice = self.choice_solving.get()
+        
+        if choice == "Breadth-First":
+            Breadth_First_Solve(self.sim_data, self, self.sim_data.Export_Cell_List())
+        elif choice == "A*":
+            A_Star_Solve(self, self.sim_data.Export_Cell_List())
 
     def Draw_Left_Pannel(self) -> None:
         # A title for the algorithm (generation) dropdown
@@ -123,16 +132,16 @@ class Editor(Tk):
         self.generation_algorithm_title.place(x=20, y=70)
         
         # The dropbox to choose the maze generation algorithm
-        options_solving = ["Breadth-First"]
+        options_solving = ["Breadth-First", "A*"]
         
-        choice_solving = StringVar(self)
-        choice_solving.set(options_solving[0])
+        self.choice_solving = StringVar(self)
+        self.choice_solving.set(options_solving[0])
         
-        self.generation_algorithm_choice = OptionMenu(self, choice_solving, *options_solving)
+        self.generation_algorithm_choice = OptionMenu(self, self.choice_solving, *options_solving)
         self.generation_algorithm_choice.place(x=20, y=110)
         
         # The button to solve the maze
-        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Breadth_First_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
+        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: self.Solve())
         self.solve_button.place(x=20, y=140)
 
         # The button to clear the maze
