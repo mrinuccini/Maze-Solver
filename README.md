@@ -3,6 +3,8 @@
 ![Language](http://ForTheBadge.com/images/badges/made-with-python.svg)
 ![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
+# About the project
+
 <br/>
 
 This repository contains the source code of a python application that allow you to generate mazes and solve them. You can also draw your own walls.
@@ -57,8 +59,42 @@ Algorithm
 </p>
 
 # Roadmap
+### GUI
 - [x] Allow the user to draw walls
+- [ ] Allow the user to move the start and finish
+
+## Generation algorithms
 - [x] Add suport for Kruskal's algorithm
+- [ ] Add support for Depth First Search algorithm 
+
+### Solving algorithms
 - [x] Add support for Breadth-First algorithm
 - [ ] Add support for A* pathfinding algorithm
-- [ ] Add support for Depth First Search generation Algorithm 
+
+# Getting started
+### Prerequisites
+This project uses several differents library to work
+
+<br/>
+
+* [**Python**] (https://www.python.org/) : Lastest version
+
+<br/>
+
+* **Numpy** :
+```sh
+pip install numpy
+```
+
+<br/>
+
+* **Colour** :
+```sh
+pip install colour
+```
+
+### Running
+To run the project open and run `src/main.py` in the IDE of your choice
+
+# Credits
+* [**Matthias Rinuccini**] (https://github.com/mrinuccini) : Creator of the project

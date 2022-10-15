@@ -1,4 +1,3 @@
-from concurrent.futures.process import _chain_from_iterable_of_lists
 import tkinter
 from GUI.Simulation_Data import Simulation_Data
 from tkinter.messagebox import showinfo
