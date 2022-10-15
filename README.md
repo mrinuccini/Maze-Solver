@@ -69,7 +69,7 @@ This repository contains the source code of a python application that allow you 
     <img src="https://i.imgur.com/A5fmtZs.png", width="45%">
 </p>
 
-* **A* Algorithm (fast and gives the shortest path) :**
+* **A star Algorithm (fast and gives the shortest path) :**
 
 <p align="center">
     <img src="https://i.imgur.com/jkZc1fI.png", width="45%">
