@@ -77,7 +77,11 @@ This project uses several differents library to work
 
 <br/>
 
-* [**Python**] (https://www.python.org/) : Lastest version
+* [**Python**](https://www.python.org/) : Python 3.10 or later
+
+<br/>
+
+Run the file `scripts/prerequisites.bat` to install all dependencies or install them individually.
 
 <br/>
 
@@ -97,4 +101,4 @@ pip install colour
 To run the project open and run `src/main.py` in the IDE of your choice
 
 # Credits
-* [**Matthias Rinuccini**] (https://github.com/mrinuccini) : Creator of the project
+* [**Matthias Rinuccini**](https://github.com/mrinuccini) : Creator of the project
