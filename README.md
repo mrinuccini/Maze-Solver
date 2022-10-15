@@ -23,8 +23,7 @@ This repository contains the source code of a python application that allow you 
 
 <br/>
 
-* You can choose different maze generation algorithms (there is only one implemented yet but more will come later): Kruskal's 
-Algorithm
+* You can choose different maze generation algorithms : Kruskal's Algorithm, Depth Search First Algorithm
 
 <br/>
 
@@ -51,6 +50,16 @@ Algorithm
 
 <br/>
 
+* **Depth Search First Algorithm :**
+
+<p align="center">
+    <img src="https://i.imgur.com/pVCFdBX.png", width="45%">
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <img src="https://i.imgur.com/OjREQAl.png", width="45%">
+</p>
+
+<br/>
+
 ### Solving Algorithms
 * **Breadth-First :**
 
@@ -67,7 +76,7 @@ Algorithm
 
 ## Generation algorithms
 - [x] Add support for Kruskal's algorithm
-- [ ] Add support for Depth First Search algorithm 
+- [x] Add support for Depth First Search algorithm 
 
 ### Solving algorithms
 - [x] Add support for Breadth-First algorithm

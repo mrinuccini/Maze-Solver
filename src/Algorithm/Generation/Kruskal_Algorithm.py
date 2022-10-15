@@ -136,9 +136,7 @@ def Generate_Maze(maze_shape: tuple, editor) -> None:
     # Display the maze one more time
     Display_Maze(maze, editor, maze_shape)
     
-    # Redraw the exit and entrance
-    editor.main_canvas.itemconfig(editor.sim_data.entrance_cell.canvas_object_id, fill="blue", outline="blue")
-    editor.main_canvas.itemconfig(editor.sim_data.exit_cell.canvas_object_id, fill="green", outline="green")
+    Display_Exit_Entrace(editor)
     
     editor.sim_data.can_generate = True
     editor.sim_data.can_solve = True

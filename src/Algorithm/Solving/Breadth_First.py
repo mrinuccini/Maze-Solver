@@ -6,7 +6,7 @@ import math
 import numpy as np
 
 red = Color("red")
-colors = list(red.range_to(Color("blue"),200))
+colors = list(red.range_to(Color("purple"),400))
 
 # Returns a table containing the coords of the cell based on the shape of the table
 def Get_Cell_Coord(cell_id, shape):
@@ -23,7 +23,7 @@ def Clear_Maze(maze: np.array, canvas: tkinter.Canvas):
         for y in range(0, maze.shape[1] - 1):
             if not maze[x][y][3] == 0: continue
             
-            color = 'black' if maze[x][y][1] == 1 and maze[x][y][3] == 0 else 'white'
+            color = 'black' if maze[x][y][1] == 1 and maze[x][y][3] == 0 else 'gray' if (50 * x + 38 * y) % 2 == 1 else 'white'
             canvas.itemconfig(maze[x][y][2], fill=color, outline=color)
 
 def Solve(sim_data: Simulation_Data, editor, maze: np.array):
@@ -85,8 +85,9 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
                 dict_output[current_tile][5] = True
                 next_process.append(current_tile)
 
-                # Update the canvas 
-                editor.main_canvas.itemconfigure(dict_output[current_tile][2], fill=colors[dict_output[current_tile][4]], outline=colors[dict_output[current_tile][4]])
+                # Update the canvas
+                color = colors[dict_output[current_tile][4]] if dict_output[current_tile][4] <= 399 else colors[-1]
+                editor.main_canvas.itemconfigure(dict_output[current_tile][2], fill=color, outline=color)
 
                 # Update the GUI
                 editor.main_canvas.update()

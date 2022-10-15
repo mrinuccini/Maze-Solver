@@ -4,6 +4,7 @@ from GUI.Cell import Cell
 from GUI.Simulation_Data import Simulation_Data
 from Algorithm.Solving.Breadth_First import Solve as Breadth_First_Solve
 from Algorithm.Generation.Kruskal_Algorithm import Generate_Maze as Krustal_Generate
+from Algorithm.Generation.Depth_Search_First import Generate_Maze as DSF_Generate
 import numpy as np
 import random
 
@@ -95,18 +96,26 @@ class Editor(Tk):
 
         self.main_canvas.pack(side=RIGHT)
 
+    def Generate(self) -> None:
+        choice = self.choice_generation.get()
+        
+        if choice == "Kruskal's algorithm":
+            Krustal_Generate((51, 39), self)
+        elif choice == "Depth search first":
+            DSF_Generate((51, 39), self)
+
     def Draw_Left_Pannel(self) -> None:
         # A title for the algorithm (generation) dropdown
         self.generation_algorithm_title = Label(self, text="Generation Algorithm", font=("Arial", 20))
         self.generation_algorithm_title.place(x=20, y=0)
         
         # The dropbox to choose the maze generation algorithm
-        generation_options = ["Kruskal's algorithm"]
+        generation_options = ["Kruskal's algorithm", "Depth search first"]
         
-        choice_generation = StringVar(self)
-        choice_generation.set(generation_options[0])
+        self.choice_generation = StringVar(self)
+        self.choice_generation.set(generation_options[0])
         
-        self.generation_algorithm_choice = OptionMenu(self, choice_generation, *generation_options)
+        self.generation_algorithm_choice = OptionMenu(self, self.choice_generation, *generation_options)
         self.generation_algorithm_choice.place(x=20, y=40)
         
         # A title for the algorithm (solving) dropdown
@@ -131,5 +140,5 @@ class Editor(Tk):
         self.clear_button.place(x=20, y=180)
         
         # The button to generate a maze
-        self.generate_button = Button(self, text="Generate", font=("Arial", 20), command=lambda: Krustal_Generate((51, 39), self))
+        self.generate_button = Button(self, text="Generate", font=("Arial", 20), command=lambda: self.Generate())
         self.generate_button.place(x=20, y=220)
