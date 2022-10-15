@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.messagebox import showinfo
 from GUI.Cell import Cell
 from GUI.Simulation_Data import Simulation_Data
-from Algorithm.Solving.Dimensions_Code_Algorithm import Solve as Dimension_Code_Solve
+from Algorithm.Solving.Breadth_First import Solve as Breadth_First_Solve
 from Algorithm.Generation.Kruskal_Algorithm import Generate_Maze as Krustal_Generate
 import numpy as np
 import random
@@ -123,7 +123,7 @@ class Editor(Tk):
         self.generation_algorithm_choice.place(x=20, y=110)
         
         # The button to solve the maze
-        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Dimension_Code_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
+        self.solve_button = Button(self, text="Solve", font=("Arial", 20), command=lambda: Breadth_First_Solve(self.sim_data, self, self.sim_data.Export_Cell_List()))
         self.solve_button.place(x=20, y=140)
 
         # The button to clear the maze

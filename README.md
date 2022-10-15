@@ -19,7 +19,7 @@ This repository contains the source code of a python application that allow you 
 
 <br/>
 
-* You can choose different maze generation algorithms (there is only one implemented yet but more will come later): Krukal's 
+* You can choose different maze generation algorithms (there is only one implemented yet but more will come later): Kruskal's 
 Algorithm
 
 <br/>
@@ -27,7 +27,7 @@ Algorithm
 * You can draw your own walls :
 
 <p align="center">
-    <img src="https://i.imgur.com/LPFG4KE.png" width=500>
+    <img src="https://i.imgur.com/LPFG4KE.png", width=500>
 </p>
 
 <br/>
@@ -37,7 +37,7 @@ Algorithm
 # Solving & Generation Algorithms
 ### Generation Algorithms
 
-* ** Kruskal's Algorithm :**
+* **Kruskal's Algorithm :**
 
 <p align="center">
     <img src="https://i.imgur.com/ILhObAL.png", width="45%">
@@ -48,4 +48,17 @@ Algorithm
 <br/>
 
 ### Solving Algorithms
-* ** Breadth-First :**
+* **Breadth-First :**
+
+<p align="center">
+    <img src="https://i.imgur.com/BhqKbdV.png", width="45%">
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <img src="https://i.imgur.com/A5fmtZs.png", width="45%">
+</p>
+
+# Roadmap
+- [x] Allow the user to draw walls
+- [x] Add suport for Kruskal's algorithm
+- [x] Add support for Breadth-First algorithm
+- [ ] Add support for A* pathfinding algorithm
+- [ ] Add support for Depth First Search generation Algorithm 
