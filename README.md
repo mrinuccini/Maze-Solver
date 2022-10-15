@@ -64,7 +64,7 @@ Algorithm
 - [ ] Allow the user to move the start and finish
 
 ## Generation algorithms
-- [x] Add suport for Kruskal's algorithm
+- [x] Add support for Kruskal's algorithm
 - [ ] Add support for Depth First Search algorithm 
 
 ### Solving algorithms
