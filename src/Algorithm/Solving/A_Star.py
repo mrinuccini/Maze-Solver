@@ -95,6 +95,7 @@ def Solve(editor: """Editor""", maze: np.array) -> None:
         
         for potential_neighbour in list_potential_neighbours:
             if potential_neighbour == entrance_cell:
+                print(maze_dict[current_cell])
                 is_searching = False
                 break
             
@@ -107,6 +108,7 @@ def Solve(editor: """Editor""", maze: np.array) -> None:
                 maze_dict[potential_neighbour][1] = g_cost
                 maze_dict[potential_neighbour][2] = h_cost
                 maze_dict[potential_neighbour][3] = f_cost
+                maze_dict[potential_neighbour][6] = maze_dict[current_cell][6] + 1
                 
                 maze_dict[potential_neighbour][5] = current_cell
                 
@@ -147,15 +149,21 @@ def Solve(editor: """Editor""", maze: np.array) -> None:
     current_cell = list(neighbours.keys())[0]
     
     while not_solved:
+        neighbours = {}
+        
         for potential_neighbour in Get_Cell_Neighbours(current_cell):
             if potential_neighbour == exit_cell:
                 not_solved = False
                 break
+            
+            if Is_Valid_Neighbor_(potential_neighbour, maze_dict, maze.shape):
+                neighbours[potential_neighbour] = maze_dict[potential_neighbour]
         
         if not not_solved:
             break
         
-        current_cell = maze_dict[current_cell][5]
+        calculated_cell_ = {k: v for k, v in sorted(neighbours.items(), key=lambda item: item[1][6])}
+        current_cell = list(calculated_cell_.keys())[0]
         
         editor.main_canvas.itemconfig(maze_dict[current_cell][0][2], fill='violet', outline='violet')
         

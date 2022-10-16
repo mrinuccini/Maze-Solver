@@ -44,6 +44,7 @@ def Solve(sim_data: Simulation_Data, editor, maze: np.array):
 
                 # If current tile is the exit
                 if current_tile == entrance_cell_coords:
+                    print(dict_output[coord])
                     is_searching = False
                     break
 

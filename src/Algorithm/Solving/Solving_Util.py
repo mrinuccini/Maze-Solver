@@ -38,6 +38,6 @@ def Maze_To_Dict(maze: np.array, use_maze_value: bool = True) -> dict:
     
     for x in range(0, maze.shape[0]):
         for y in range(0, maze.shape[1]):
-            dict_output[Get_Cell_Coord(maze[x][y][0], maze.shape)] = maze[x][y] if use_maze_value else [maze[x][y], 0, 0, 0, False, (0, 0)]
+            dict_output[Get_Cell_Coord(maze[x][y][0], maze.shape)] = maze[x][y] if use_maze_value else [maze[x][y], 0, 0, 0, False, (0, 0), 0]
     
     return dict_output
