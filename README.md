@@ -118,6 +118,3 @@ pip install colour
 
 ### Running
 To run the project open and run `src/main.py` in the IDE of your choice
-
-# Credits
-* [**Matthias Rinuccini**](https://github.com/mrinuccini) : Creator of the project
